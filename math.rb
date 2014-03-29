@@ -1,9 +1,24 @@
 # -*- coding: utf-8 -*-
+
+option = ARGV
+case option
+when "-v"
+  puts "math 0.0.1 [2014-03-29]"
+when "-l"
+  puts "math 0.0.1 is Copyright (c) 2014 math developers"
+  puts "It is free software under the terms of a BSD 3-Clause Licence."
+else
+  puts "Error"
+end
+
 class Calculations  #計算
+
+  attr_accessor :name
+
   def initialize(car_numbers)
     @car_numbers = car_numbers
   end
-
+  
   def select(figures)
     if figures == 10
       puts "10になりました!"
@@ -12,6 +27,8 @@ class Calculations  #計算
     end
   end
   
+  private :select
+
   def addition #足し算
     figures = 0
     for i in @car_numbers
