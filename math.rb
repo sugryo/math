@@ -1,25 +1,26 @@
 # -*- coding: utf-8 -*-
 
-option = ARGV
-case option
-when "-v"
-  puts "math 0.0.1 [2014-03-29]"
-when "-l"
-  puts "math 0.0.1 is Copyright (c) 2014 math developers"
-  puts "It is free software under the terms of a BSD 3-Clause License."
-else
-  puts "Error"
+option = ARGV[0]
+
+def option(option)
+  unless option == nil
+    case option
+    when "-v"
+      puts "math 0.0.1 (2014-03-30)"
+    when "-l"
+      puts "math is the terms of a BSD 3-Clause License."
+    end
+  end
 end
 
+option(option)
+
 class Calculations  #計算
-
-  attr_accessor :name
-
   def initialize(car_numbers)
     @car_numbers = car_numbers
   end
   
-  def select(figures)
+  def ten?(figures)
     if figures == 10
       puts "10になりました!"
     else
@@ -27,19 +28,19 @@ class Calculations  #計算
     end
   end
   
-  private :select
+  private :ten?
 
   def addition #足し算
     figures = 0
     for i in @car_numbers
       figures += i
     end
-    select(figures)
+    ten?(figures)
   end
 
   def subtraction  #引き算
     figures = @car_numbers[0] - @car_numbers[1] - @car_numbers[2] - @car_numbers[3]
-    select(figures)
+    ten?(figures)
   end
 
   def multiplication  #掛け算
@@ -48,12 +49,12 @@ class Calculations  #計算
       tmp = figures
       figures = tmp * i
     end
-    select(figures)
+    ten?(figures)
   end
 
   def division  #割り算
     figures = @car_numbers[0] / @car_numbers[1] / @car_numbers[2] / @car_numbers[3]
-    select(figures)
+    ten?(figures)
   end
 end
 
