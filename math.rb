@@ -6,7 +6,7 @@ when "-v"
   puts "math 0.0.1 [2014-03-29]"
 when "-l"
   puts "math 0.0.1 is Copyright (c) 2014 math developers"
-  puts "It is free software under the terms of a BSD 3-Clause Licence."
+  puts "It is free software under the terms of a BSD 3-Clause License."
 else
   puts "Error"
 end
