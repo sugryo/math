@@ -13,6 +13,14 @@ def option(option)
   end
 end
 
+def ten?(num)
+  if num == 10
+    true
+  else
+    false
+  end
+end
+
 option(option)
 
 class Calculations  #計算
@@ -20,8 +28,8 @@ class Calculations  #計算
     @car_numbers = car_numbers
   end
   
-  def ten?(figures)
-    if figures == 10
+  def select(figures)
+    if ten?(figures)
       puts "10になりました!"
     else
       puts "10になりませんでした。戻り値は#{figures}です。"
@@ -35,12 +43,12 @@ class Calculations  #計算
     for i in @car_numbers
       figures += i
     end
-    ten?(figures)
+    select(figures)
   end
 
   def subtraction  #引き算
     figures = @car_numbers[0] - @car_numbers[1] - @car_numbers[2] - @car_numbers[3]
-    ten?(figures)
+    select(figures)
   end
 
   def multiplication  #掛け算
@@ -49,12 +57,12 @@ class Calculations  #計算
       tmp = figures
       figures = tmp * i
     end
-    ten?(figures)
+    select(figures)
   end
 
   def division  #割り算
     figures = @car_numbers[0] / @car_numbers[1] / @car_numbers[2] / @car_numbers[3]
-    ten?(figures)
+    select(figures)
   end
 end
 
