@@ -36,7 +36,7 @@ class Calculations  #計算
     end
   end
   
-  private :ten?
+  private :select
 
   def addition #足し算
     figures = 0
@@ -54,8 +54,7 @@ class Calculations  #計算
   def multiplication  #掛け算
     figures = 1
     for i in @car_numbers
-      tmp = figures
-      figures = tmp * i
+      figures *= i
     end
     select(figures)
   end
