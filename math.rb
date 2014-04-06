@@ -1,3 +1,4 @@
+#! /home/sugryo/.rbenv/versions/2.1.1/bin/ruby
 # -*- coding: utf-8 -*-
 
 option = ARGV[0]
@@ -60,8 +61,17 @@ class Calculations  #計算
   end
 
   def division  #割り算
-    figures = @car_numbers[0] / @car_numbers[1] / @car_numbers[2] / @car_numbers[3]
-    select(figures)
+    figures = 1
+    begin
+      for i in @car_numbers
+        figures /= i
+      end
+      select(figures)
+    rescue ZeroDivisionError
+      puts "答えは0です。"
+    rescue
+      puts "エラーが発生しました。"
+    end
   end
 end
 
