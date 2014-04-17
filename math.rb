@@ -48,7 +48,10 @@ class Calculations  #計算
   end
 
   def subtraction  #引き算
-    figures = @car_numbers[0] - @car_numbers[1] - @car_numbers[2] - @car_numbers[3]
+    figures = 0
+    for i in @car_numbers
+      figures -= i
+    end
     select(figures)
   end
 
