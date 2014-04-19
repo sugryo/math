@@ -6,10 +6,20 @@ option = ARGV[0]
 def option(option)
   unless option == nil
     case option
-    when "-v"
+    when "-v","--version"
       puts "math 0.0.1 (2014-03-30)"
-    when "-l"
+    when "--license"
       puts "math is the terms of a BSD 3-Clause License."
+    when "-c","--copyright"
+      puts "math - Copyright (c) 2014 Ryo Sugimoto"
+    when "-h","--help"
+      puts "usage: math.rb [option]"
+      puts "-v    --version    see the math version"
+      puts "      --license    see the math license"
+      puts "-c    --copyright  see the math copyright"
+      puts "-h    --help       see the math help"
+    else
+      nil
     end
   end
 end
