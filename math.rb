@@ -13,17 +13,21 @@ def option(option)
     when "-c","--copyright"
       puts "math - Copyright (c) 2014 Ryo Sugimoto"
     when "-h","--help"
-      puts "usage: math.rb [option]"
-      puts "-v    --version    see the math version"
-      puts "      --license    see the math license"
-      puts "-c    --copyright  see the math copyright"
-      puts "-h    --help       see the math help"
+      help
     else
-      nil
+      help
     end
   end
 end
 
+def help
+      puts "usage: math.rb [-v] [-c] [-h] [--version] [--license] [--copyright] [--help]"
+      puts "-v    --version    see the math version"
+      puts "      --license    see the math license"
+      puts "-c    --copyright  see the math copyright"
+      puts "-h    --help       see the math help"
+end
+  
 def ten?(num)
   if num == 10
     true
@@ -34,57 +38,78 @@ end
 
 option(option)
 
-class Calculations  #計算
+class Errors
+  def zero_division_error
+    puts "答えは、0です。"
+  end
+
+  def error
+    puts "エラーが発生しました。"
+  end
+end
+
+class Calculations < Errors  #計算
   def initialize(car_numbers)
-    @car_numbers = car_numbers
+    begin
+      @car_numbers = car_numbers
+    rescue
+      error
+    end
   end
   
   def select(figures)
-    if ten?(figures)
-      puts "10になりました!"
-    else
-      puts "10になりませんでした。戻り値は#{figures}です。"
+    begin
+      if ten?(figures)
+        puts "10になりました!"
+      else
+        puts "10になりませんでした。戻り値は#{figures}です。"
+      end
+    rescue
+      error
     end
   end
   
   private :select
 
   def addition #足し算
-    figures = 0
-    for i in @car_numbers
-      figures += i
+    begin
+      figures = 0
+      @car_numbers.each {|i| figures += i}
+      select(figures)
+    rescue
+      error
     end
-    select(figures)
   end
 
   def subtraction  #引き算
-    figures = 0
-    for i in @car_numbers
-      figures -= i
+    begin
+      figures = 0
+      @car_numbers.each {|i| figures -= i}
+      select(figures)
+    rescue
+      error
     end
-    select(figures)
   end
 
   def multiplication  #掛け算
-    figures = 1
-    for i in @car_numbers
-      figures *= i
+    begin
+      figures = 1
+      @car_numbers.each {|i| figures *= i}
+      select(figures)
+    rescue
+      error
     end
-    select(figures)
   end
 
   def division  #割り算
-    figures = 1
     begin
-      for i in @car_numbers
-        figures /= i
-      end
+      figures = 1
+      @car_numbers.each {|i| figures /= i}
       select(figures)
     rescue ZeroDivisionError
-      puts "答えは0です。"
+      zero_division_error
     rescue
-      puts "エラーが発生しました。"
+      error
     end
   end
 end
-
