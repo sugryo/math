@@ -3,41 +3,26 @@
 
 option = ARGV[0]
 
-def option(option)
-  unless option == nil
-    case option
-    when "-v","--version"
-      version
-    when "--license"
-      license
-    when "-c","--copyright"
-      copyright
-    when "-h","--help"
-      help
-    else
-      help
-    end
+module MathOptions
+  def version
+    puts "math 0.0.2 (2014-04-22)"
   end
-end
 
-def version
-  puts "math 0.0.2 (2014-04-22)"
-end
+  def license
+    puts "math is the terms of a BSD 3-Clause License."
+  end
 
-def license
-  puts "math is the terms of a BSD 3-Clause License."
-end
+  def copyright
+    puts "math - Copyright (c) 2014 Ryo Sugimoto"
+  end
 
-def copyright
-  puts "math - Copyright (c) 2014 Ryo Sugimoto"
-end
-
-def help
-      puts "usage: math.rb [-v] [-c] [-h] [--version] [--license] [--copyright] [--help]"
-      puts "-v    --version    see the math version"
-      puts "      --license    see the math license"
-      puts "-c    --copyright  see the math copyright"
-      puts "-h    --help       see the math help"
+  def help
+    puts "usage: math.rb [-v] [-c] [-h] [--version] [--license] [--copyright] [--help]"
+    puts "-v    --version    see the math version"
+    puts "      --license    see the math license"
+    puts "-c    --copyright  see the math copyright"
+    puts "-h    --help       see the math help"
+  end
 end
   
 def ten?(num)
@@ -123,3 +108,25 @@ class Calculations < Errors  #計算
     end
   end
 end
+
+def option(option)
+  include MathOptions
+  unless option == nil
+    case option
+    when "-v", "--version"
+      version
+    when "-c","--copyright"
+      copyright
+    when "--license"
+      license
+    when "-h","--help"
+      help
+    else
+      error = Errors.new
+      error.error
+      help
+    end
+  end
+end
+
+option(option)
