@@ -7,17 +7,29 @@ def option(option)
   unless option == nil
     case option
     when "-v","--version"
-      puts "math 0.0.1 (2014-03-30)"
+      version
     when "--license"
-      puts "math is the terms of a BSD 3-Clause License."
+      license
     when "-c","--copyright"
-      puts "math - Copyright (c) 2014 Ryo Sugimoto"
+      copyright
     when "-h","--help"
       help
     else
       help
     end
   end
+end
+
+def version
+  puts "math 0.0.2 (2014-04-22)"
+end
+
+def license
+  puts "math is the terms of a BSD 3-Clause License."
+end
+
+def copyright
+  puts "math - Copyright (c) 2014 Ryo Sugimoto"
 end
 
 def help
@@ -35,8 +47,6 @@ def ten?(num)
     false
   end
 end
-
-option(option)
 
 class Errors
   def zero_division_error
