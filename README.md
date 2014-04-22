@@ -1,5 +1,3 @@
-math
-====
 
 # math とは何?
 math は、4桁の数字(車のナンバー、銀行の暗証番号など、それでなくてももちろんいいです。)
@@ -16,4 +14,4 @@ math は、4桁の数字(車のナンバー、銀行の暗証番号など、そ�
 TODO: 今度やる
 
 # License
-License: BSD 3-Clause License
+License: [BSD 3-Clause License](http://opensource.org/licenses/BSD-3-Clause/)
