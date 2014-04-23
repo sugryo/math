@@ -33,17 +33,15 @@ def ten?(num)
   end
 end
 
-class Errors
-  def zero_division_error
-    puts "答えは、0です。"
-  end
-
-  def error
-    puts "エラーが発生しました。"
-  end
+def zero_division_error
+  puts "答えは、0です。"
 end
 
-class Calculations < Errors  #計算
+def error
+  puts "エラーが発生しました。"
+end
+
+class Calculations   #計算
   def initialize(car_numbers)
     begin
       @car_numbers = car_numbers
